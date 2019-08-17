@@ -1,4 +1,4 @@
-package rf.ryanandri.basictools.utils;
+package rf.ryanandri.simpleutilities.utils;
 
 import java.io.BufferedReader;
 import java.io.File;

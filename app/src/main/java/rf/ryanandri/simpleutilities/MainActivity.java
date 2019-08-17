@@ -1,4 +1,4 @@
-package rf.ryanandri.basictools;
+package rf.ryanandri.simpleutilities;
 
 import android.os.Bundle;
 
@@ -15,11 +15,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-import rf.ryanandri.basictools.fragments.About;
-import rf.ryanandri.basictools.fragments.DeviceInfo;
-import rf.ryanandri.basictools.fragments.DisplayCalibration;
-import rf.ryanandri.basictools.fragments.Miscellaneous;
-import rf.ryanandri.basictools.utils.RootUtils;
+import rf.ryanandri.simpleutilities.fragments.About;
+import rf.ryanandri.simpleutilities.fragments.DeviceInfo;
+import rf.ryanandri.simpleutilities.fragments.DisplayCalibration;
+import rf.ryanandri.simpleutilities.fragments.Miscellaneous;
+import rf.ryanandri.simpleutilities.utils.RootUtils;
 
 public class MainActivity extends AppCompatActivity {
     private List<Fragment> mFragmentList = new ArrayList<>();

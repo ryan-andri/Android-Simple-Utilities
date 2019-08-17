@@ -1,4 +1,4 @@
-package rf.ryanandri.basictools.fragments;
+package rf.ryanandri.simpleutilities.fragments;
 
 import android.os.AsyncTask;
 import android.os.Build;
@@ -14,9 +14,9 @@ import androidx.fragment.app.Fragment;
 
 import java.lang.ref.WeakReference;
 
-import rf.ryanandri.basictools.R;
-import rf.ryanandri.basictools.utils.RootUtils;
-import rf.ryanandri.basictools.utils.frags.UtilsDeviceInfo;
+import rf.ryanandri.simpleutilities.R;
+import rf.ryanandri.simpleutilities.utils.RootUtils;
+import rf.ryanandri.simpleutilities.utils.frags.UtilsDeviceInfo;
 
 /**
  * Created by Ryan Andri on 8/17/2019.
@@ -53,12 +53,12 @@ public class DeviceInfo extends Fragment {
         bID = view.findViewById(R.id.buildID);
         bFp = view.findViewById(R.id.buildFingerprint);
 
-        new AsyncDeviceFragment(this).execute();
+        new AsyncDeviceInfoFragment(this).execute();
 
         return view;
     }
 
-    private static class AsyncDeviceFragment extends AsyncTask<Void, Void, Void> {
+    private static class AsyncDeviceInfoFragment extends AsyncTask<Void, Void, Void> {
         private WeakReference<DeviceInfo> fragDeviceWeakReference;
 
         private String dCodename;
@@ -73,7 +73,7 @@ public class DeviceInfo extends Fragment {
         private String buildFp;
         private String buildID;
 
-        private AsyncDeviceFragment(DeviceInfo deviceInfo) {
+        private AsyncDeviceInfoFragment(DeviceInfo deviceInfo) {
             fragDeviceWeakReference = new WeakReference<>(deviceInfo);
         }
 

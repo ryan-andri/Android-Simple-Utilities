@@ -1,4 +1,4 @@
-package rf.ryanandri.basictools;
+package rf.ryanandri.simpleutilities;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -13,7 +13,7 @@ import com.github.ybq.android.spinkit.style.ThreeBounce;
 
 import java.lang.ref.WeakReference;
 
-import rf.ryanandri.basictools.utils.RootUtils;
+import rf.ryanandri.simpleutilities.utils.RootUtils;
 
 /**
  * Created by Ryan Andri on 8/16/2019.

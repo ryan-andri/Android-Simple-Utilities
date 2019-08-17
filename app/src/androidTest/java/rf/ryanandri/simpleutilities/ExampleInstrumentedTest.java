@@ -1,4 +1,4 @@
-package rf.ryanandri.basictools;
+package rf.ryanandri.simpleutilities;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("rf.ryanandri.basictools", appContext.getPackageName());
+        assertEquals("rf.ryanandri.simpleutilities", appContext.getPackageName());
     }
 }

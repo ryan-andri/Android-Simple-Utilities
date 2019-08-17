@@ -1,4 +1,4 @@
-package rf.ryanandri.basictools;
+package rf.ryanandri.simpleutilities;
 
 import android.os.Bundle;
 import android.widget.TextView;

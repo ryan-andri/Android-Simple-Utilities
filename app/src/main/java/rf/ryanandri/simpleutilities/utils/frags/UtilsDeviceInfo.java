@@ -1,10 +1,10 @@
-package rf.ryanandri.basictools.utils.frags;
+package rf.ryanandri.simpleutilities.utils.frags;
 
 import android.os.Build;
 
 import java.lang.reflect.Field;
 
-import rf.ryanandri.basictools.utils.Utils;
+import rf.ryanandri.simpleutilities.utils.Utils;
 
 /**
  * Modified by Ryan Andri on 8/16/2019.

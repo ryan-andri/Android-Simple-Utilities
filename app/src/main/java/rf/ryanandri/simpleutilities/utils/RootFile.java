@@ -1,4 +1,4 @@
-package rf.ryanandri.basictools.utils;
+package rf.ryanandri.simpleutilities.utils;
 
 /**
  * Created by willi on 30.12.15.

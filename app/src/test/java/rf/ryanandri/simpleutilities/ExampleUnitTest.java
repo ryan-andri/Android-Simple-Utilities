@@ -1,4 +1,4 @@
-package rf.ryanandri.basictools;
+package rf.ryanandri.simpleutilities;
 
 import org.junit.Test;
 

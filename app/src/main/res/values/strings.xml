@@ -1,7 +1,11 @@
 <resources>
-    <string name="app_name">Basic Tools</string>
+    <string name="app_name">Simple Utilities</string>
     <string name="tab_device_info">Device Info</string>
     <string name="tab_miscellaneous">Miscellaneous</string>
     <string name="tab_display">Display Calibration</string>
     <string name="tab_about">About</string>
+
+    <string name="tcp">TCP Congestion Control</string>
+    <string name="selinux_warn">Before you change Selinux, make sure you know what you\'re doing and you know what Selinux purposed.</string>
+    <string name="tcp_sum">Transmission Control Protocol (TCP) uses a network congestion-avoidance algorithm that includes various aspects of an additive increase or multiplicative decrease (AIMD) scheme, with other schemes such as slow start and congestion window to achieve congestion avoidance.</string>
 </resources>
