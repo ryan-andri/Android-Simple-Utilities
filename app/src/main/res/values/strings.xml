@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Basic Tools</string>
+    <string name="tab_device_info">Device Info</string>
+    <string name="tab_miscellaneous">Miscellaneous</string>
+    <string name="tab_display">Display Calibration</string>
+    <string name="tab_about">About</string>
+</resources>
