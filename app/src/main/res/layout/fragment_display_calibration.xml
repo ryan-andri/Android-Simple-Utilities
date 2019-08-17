@@ -1,6 +1,286 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentEnd="true"
+    android:scrollbars="none">
 
-</LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            card_view:cardCornerRadius="4dp">
+
+            <Switch
+                android:id="@+id/swKcal"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enable Kcal"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@color/colorDark" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardCornerRadius="4dp">
+
+            <LinearLayout
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/scrColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorDark"
+                    android:text="Screen Color"/>
+
+                <!-- Red -->
+                <TextView
+                    android:id="@+id/tvRed"
+                    android:text="Red"
+                    android:textSize="15sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorDarkSec" />
+
+                <com.warkiz.widget.IndicatorSeekBar
+                    android:id="@+id/sbRed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:isb_show_thumb_text="true"
+                    app:isb_show_indicator="none"
+                    app:isb_track_progress_color="@color/colorPrimary"
+                    app:isb_thumb_color="@color/colorPrimary"
+                    app:isb_thumb_text_color="@color/colorDark"
+                    app:isb_min="0" app:isb_max="256"/>
+
+                <!-- Green -->
+                <TextView
+                    android:id="@+id/tvGreen"
+                    android:text="Green"
+                    android:textSize="15sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorDarkSec" />
+
+                <com.warkiz.widget.IndicatorSeekBar
+                    android:id="@+id/sbGreen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:isb_show_thumb_text="true"
+                    app:isb_show_indicator="none"
+                    app:isb_min="0" app:isb_max="256"
+                    app:isb_track_progress_color="@color/colorPrimary"
+                    app:isb_thumb_color="@color/colorPrimary"
+                    app:isb_thumb_text_color="@color/colorDark" />
+
+                <!-- Blue -->
+                <TextView
+                    android:id="@+id/tvBlue"
+                    android:text="Blue"
+                    android:textSize="15sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorDarkSec" />
+
+                <com.warkiz.widget.IndicatorSeekBar
+                    android:id="@+id/sbBlue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:isb_show_thumb_text="true"
+                    app:isb_show_indicator="none"
+                    app:isb_min="0" app:isb_max="256"
+                    app:isb_track_progress_color="@color/colorPrimary"
+                    app:isb_thumb_color="@color/colorPrimary"
+                    app:isb_thumb_text_color="@color/colorDark"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardCornerRadius="4dp">
+
+            <LinearLayout
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvMisc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorDark"
+                    android:text="Miscellaneous"/>
+
+                <!-- Contrast -->
+                <TextView
+                    android:id="@+id/tvContrast"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Contrast"
+                    android:gravity="start"
+                    android:textSize="15sp"
+                    android:textColor="@color/colorDarkSec" />
+
+                <com.warkiz.widget.IndicatorSeekBar
+                    android:id="@+id/sbCont"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:isb_show_thumb_text="true"
+                    app:isb_show_indicator="none"
+                    app:isb_min="128" app:isb_max="383"
+                    app:isb_track_progress_color="@color/colorPrimary"
+                    app:isb_thumb_color="@color/colorPrimary"
+                    app:isb_thumb_text_color="@color/colorDark" />
+
+                <!-- Saturation -->
+                <TextView
+                    android:id="@+id/tvSaturation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Saturation"
+                    android:gravity="start"
+                    android:textSize="15sp"
+                    android:textColor="@color/colorDarkSec" />
+
+                <com.warkiz.widget.IndicatorSeekBar
+                    android:id="@+id/sbSaturation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:isb_show_thumb_text="true"
+                    app:isb_show_indicator="none"
+                    app:isb_min="224" app:isb_max="383"
+                    app:isb_track_progress_color="@color/colorPrimary"
+                    app:isb_thumb_color="@color/colorPrimary"
+                    app:isb_thumb_text_color="@color/colorDark" />
+
+                <!-- Hue -->
+                <TextView
+                    android:id="@+id/tvHue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Hue"
+                    android:gravity="start"
+                    android:textSize="15sp"
+                    android:textColor="@color/colorDarkSec" />
+
+                <com.warkiz.widget.IndicatorSeekBar
+                    android:id="@+id/sbHue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:isb_show_thumb_text="true"
+                    app:isb_show_indicator="none"
+                    app:isb_min="0" app:isb_max="1536"
+                    app:isb_track_progress_color="@color/colorPrimary"
+                    app:isb_thumb_color="@color/colorPrimary"
+                    app:isb_thumb_text_color="@color/colorDark" />
+
+                <!-- Screen values -->
+                <TextView
+                    android:id="@+id/tvScreenValues"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Screen Values"
+                    android:gravity="start"
+                    android:textSize="15sp"
+                    android:textColor="@color/colorDarkSec" />
+
+                <com.warkiz.widget.IndicatorSeekBar
+                    android:id="@+id/sbScreenValues"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:isb_show_thumb_text="true"
+                    app:isb_show_indicator="none"
+                    app:isb_min="128" app:isb_max="383"
+                    app:isb_track_progress_color="@color/colorPrimary"
+                    app:isb_thumb_color="@color/colorPrimary"
+                    app:isb_thumb_text_color="@color/colorDark" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            card_view:cardCornerRadius="4dp">
+
+            <Switch
+                android:id="@+id/swGreyScale"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorDark"
+                android:text="Enable Greyscale" />
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>
