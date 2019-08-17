@@ -23,12 +23,15 @@ public class CheckingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Sprite m3Bounce = new ThreeBounce();
-        setContentView(R.layout.activity_checking);
-        ProgressBar loading = findViewById(R.id.loadingCheck);
-        loading.setIndeterminateDrawable(m3Bounce);
-        loading.setIndeterminate(true);
-        new AsyncCheck(this).execute();
+
+        if (savedInstanceState == null) {
+            Sprite m3Bounce = new ThreeBounce();
+            setContentView(R.layout.activity_checking);
+            ProgressBar loading = findViewById(R.id.loadingCheck);
+            loading.setIndeterminateDrawable(m3Bounce);
+            loading.setIndeterminate(true);
+            new AsyncCheck(this).execute();
+        }
     }
 
     private static class AsyncCheck extends AsyncTask<Void, Void, Void> {
