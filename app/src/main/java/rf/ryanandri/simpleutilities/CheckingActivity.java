@@ -14,6 +14,8 @@ import com.github.ybq.android.spinkit.style.ThreeBounce;
 import java.lang.ref.WeakReference;
 
 import rf.ryanandri.simpleutilities.utils.RootUtils;
+import rf.ryanandri.simpleutilities.utils.frags.UtilsDeviceInfo;
+import rf.ryanandri.simpleutilities.utils.frags.UtilsMiscellaneous;
 
 /**
  * Created by Ryan Andri on 8/16/2019.
@@ -63,7 +65,13 @@ public class CheckingActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             hasRoot = RootUtils.rootAccess();
-            if (hasRoot) hasBusybox = RootUtils.busyboxInstalled();
+            if (hasRoot) {
+                hasBusybox = RootUtils.busyboxInstalled();
+                if (hasBusybox) {
+                    UtilsDeviceInfo.getInstance();
+                    UtilsMiscellaneous.init();
+                }
+            }
             return null;
         }
     }

@@ -11,12 +11,24 @@ import rf.ryanandri.simpleutilities.utils.Utils;
  * Created by Ryan Andri on 8/17/2019.
  */
 public class UtilsMiscellaneous {
-    public static List<String> getTcpAvailableCongestions(String path) {
-        return new ArrayList<>(Arrays.asList(Utils.readFile(path).split(" ")));
+    private static final String TCP_DIR = "/proc/sys/net/ipv4";
+
+    public static List<String> listTcp;
+    public static String SelinuxStatus;
+
+    public static void init() {
+        listTcp = getTcpAvailableCongestions();
+        SelinuxStatus = getSelinuxInfo();
     }
 
-    public static void setTcpCongestion(String path, String tcp) {
-        Utils.writeFile(path, tcp, true, true);
+    private static List<String> getTcpAvailableCongestions() {
+        String TCP_AVAILABLE_CONGESTIONS = TCP_DIR + "/tcp_available_congestion_control";
+        return new ArrayList<>(Arrays.asList(Utils.readFile(TCP_AVAILABLE_CONGESTIONS).split(" ")));
+    }
+
+    public static void setTcpCongestion(String tcp) {
+        String TCP_CONTROL = TCP_DIR + "/tcp_congestion_control";
+        Utils.writeFile(TCP_CONTROL, tcp, true, true);
     }
 
     public static String getSelinuxInfo() {

@@ -1,6 +1,5 @@
 package rf.ryanandri.simpleutilities.fragments;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,10 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
-
 import rf.ryanandri.simpleutilities.R;
 import rf.ryanandri.simpleutilities.utils.frags.UtilsMiscellaneous;
 
@@ -29,13 +24,7 @@ import rf.ryanandri.simpleutilities.utils.frags.UtilsMiscellaneous;
 public class Miscellaneous extends Fragment implements
         AdapterView.OnItemSelectedListener, CompoundButton.OnCheckedChangeListener {
 
-    private final String TCP_DIR = "/proc/sys/net/ipv4";
-
-    private Spinner spnTcp;
     private TextView tvSelinuxStatus;
-    private Switch swSelinux;
-
-    private View fView;
 
     /*
      * work arround
@@ -49,57 +38,25 @@ public class Miscellaneous extends Fragment implements
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_miscellaneous, container, false);
 
-        // set id for some global var
-        fView = view;
-        spnTcp = view.findViewById(R.id.spnTcp);
-        swSelinux = view.findViewById(R.id.swSelinux);
+        Spinner spnTcp = view.findViewById(R.id.spnTcp);
+        Switch swSelinux = view.findViewById(R.id.swSelinux);
         tvSelinuxStatus = view.findViewById(R.id.selinuxStatus);
+
+        // set adapter TCP Spinner
+        ArrayAdapter<String> arrTcp = new ArrayAdapter<>(view.getContext(),
+                R.layout.simple_spinner_layout, UtilsMiscellaneous.listTcp);
+        arrTcp.setDropDownViewResource(R.layout.simple_dropdown_layout);
+        spnTcp.setAdapter(arrTcp);
+
+        String selnx = UtilsMiscellaneous.SelinuxStatus;
+        swSelinux.setChecked(selnx.equals("Enforcing"));
+        tvSelinuxStatus.setText(selnx);
 
         // set Listener
         spnTcp.setOnItemSelectedListener(this);
         swSelinux.setOnCheckedChangeListener(this);
 
-        new AsyncMiscellaneousFragment(this).execute();
-
         return view;
-    }
-
-    private static class AsyncMiscellaneousFragment extends AsyncTask<Void, Void, Void> {
-        private WeakReference<Miscellaneous> fragmentWeakReference;
-
-        private List<String> listTcp = new ArrayList<>();
-        private String selinuxMode;
-
-        private AsyncMiscellaneousFragment(Miscellaneous miscellaneous) {
-            fragmentWeakReference = new WeakReference<>(miscellaneous);
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            Miscellaneous miscAsync = fragmentWeakReference.get();
-
-            String TCP_AVAILABLE_CONGESTIONS = miscAsync.TCP_DIR + "/tcp_available_congestion_control";
-
-            listTcp = UtilsMiscellaneous.getTcpAvailableCongestions(TCP_AVAILABLE_CONGESTIONS);
-            selinuxMode = UtilsMiscellaneous.getSelinuxInfo();
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            Miscellaneous miscAsync = fragmentWeakReference.get();
-
-            // set adapter TCP Spinner
-            ArrayAdapter<String> arrTcp = new ArrayAdapter<>(miscAsync.fView.getContext(),
-                    R.layout.simple_spinner_layout, listTcp);
-            arrTcp.setDropDownViewResource(R.layout.simple_dropdown_layout);
-            miscAsync.spnTcp.setAdapter(arrTcp);
-
-            miscAsync.swSelinux.setChecked(selinuxMode.equals("Enforcing"));
-            miscAsync.tvSelinuxStatus.setText(selinuxMode);
-        }
     }
 
     @Override
@@ -109,7 +66,7 @@ public class Miscellaneous extends Fragment implements
         } else {
             if (adapterView.getId() == R.id.spnTcp) {
                 String tcp = adapterView.getItemAtPosition(i).toString();
-                UtilsMiscellaneous.setTcpCongestion(TCP_DIR + "/tcp_congestion_control", tcp);
+                UtilsMiscellaneous.setTcpCongestion(tcp);
             }
         }
     }

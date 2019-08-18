@@ -1,7 +1,5 @@
 package rf.ryanandri.simpleutilities.fragments;
 
-import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,10 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import java.lang.ref.WeakReference;
-
 import rf.ryanandri.simpleutilities.R;
-import rf.ryanandri.simpleutilities.utils.RootUtils;
 import rf.ryanandri.simpleutilities.utils.frags.UtilsDeviceInfo;
 
 /**
@@ -23,95 +18,39 @@ import rf.ryanandri.simpleutilities.utils.frags.UtilsDeviceInfo;
  */
 public class DeviceInfo extends Fragment {
 
-    private TextView kernelver;
-    private TextView devName;
-    private TextView codename;
-    private TextView dMnfcr;
-    private TextView dArchi;
-    private TextView dRamP;
-    private TextView androidVer;
-    private TextView androidCodename;
-    private TextView sdkVer;
-    private TextView bID;
-    private TextView bFp;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_device_info, container, false);
-
-        kernelver = view.findViewById(R.id.kernelVersion);
-        devName = view.findViewById(R.id.deviceName);
-        codename = view.findViewById(R.id.deviceCodeName);
-        dMnfcr = view.findViewById(R.id.deviceManufac);
-        dArchi = view.findViewById(R.id.deviceArch);
-        dRamP = view.findViewById(R.id.totalRam);
-        androidVer = view.findViewById(R.id.androidVersion);
-        androidCodename = view.findViewById(R.id.androidCodename);
-        sdkVer = view.findViewById(R.id.sdkVersion);
-        bID = view.findViewById(R.id.buildID);
-        bFp = view.findViewById(R.id.buildFingerprint);
-
-        new AsyncDeviceInfoFragment(this).execute();
-
+        setView(view);
         return view;
     }
 
-    private static class AsyncDeviceInfoFragment extends AsyncTask<Void, Void, Void> {
-        private WeakReference<DeviceInfo> fragDeviceWeakReference;
+    private void setView(View view) {
+        UtilsDeviceInfo utilInstance = UtilsDeviceInfo.getInstance();
+        TextView kernelver = view.findViewById(R.id.kernelVersion);
+        TextView devName = view.findViewById(R.id.deviceName);
+        TextView codename = view.findViewById(R.id.deviceCodeName);
+        TextView dMnfcr = view.findViewById(R.id.deviceManufac);
+        TextView dArchi = view.findViewById(R.id.deviceArch);
+        TextView dRamP = view.findViewById(R.id.totalRam);
+        TextView androidVer = view.findViewById(R.id.androidVersion);
+        TextView androidCodename = view.findViewById(R.id.androidCodename);
+        TextView sdkVer = view.findViewById(R.id.sdkVersion);
+        TextView bFp = view.findViewById(R.id.buildFingerprint);
 
-        private String dCodename;
-        private String dName;
-        private String kVersion;
-        private String dManufac;
-        private String dArch;
-        private String dRam;
-        private String andVer;
-        private String andCodename;
-        private String sdkVersion;
-        private String buildFp;
-        private String buildID;
-
-        private AsyncDeviceInfoFragment(DeviceInfo deviceInfo) {
-            fragDeviceWeakReference = new WeakReference<>(deviceInfo);
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-
-            kVersion = UtilsDeviceInfo.getLinuxVersion();
-            dName = Build.MODEL;
-            dCodename = Build.DEVICE;
-            dManufac = Build.MANUFACTURER;
-            dArch = RootUtils.runCommand("uname -m");
-            dRam = String.valueOf(UtilsDeviceInfo.totalRam());
-            andVer = Build.VERSION.RELEASE;
-            andCodename = UtilsDeviceInfo.getCodename();
-            sdkVersion = String.valueOf(Build.VERSION.SDK_INT);
-            buildID = Build.ID;
-            buildFp = Build.FINGERPRINT;
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-
-            DeviceInfo dFrag = fragDeviceWeakReference.get();
-
-            dFrag.kernelver.setText(kVersion);
-            dFrag.devName.setText(dName);
-            dFrag.codename.setText(dCodename);
-            dFrag.dMnfcr.setText(dManufac);
-            dFrag.dArchi.setText(dArch);
-            dFrag.dRamP.setText(dRam);
-            dFrag.androidVer.setText(andVer);
-            dFrag.androidCodename.setText(andCodename);
-            dFrag.sdkVer.setText(sdkVersion);
-            dFrag.bID.setText(buildID);
-            dFrag.bFp.setText(buildFp);
-        }
+        kernelver.setText(utilInstance.linuxVersion);
+        devName.setText(utilInstance.deviceName);
+        codename.setText(utilInstance.deviceCodeName);
+        dMnfcr.setText(utilInstance.deviceManufacture);
+        dArchi.setText(utilInstance.deviceArch);
+        dRamP.setText(utilInstance.totalRam);
+        androidVer.setText(utilInstance.androidVersion);
+        androidCodename.setText(utilInstance.androidCodename);
+        sdkVer.setText(utilInstance.androidSdk);
+        TextView bID = view.findViewById(R.id.buildID);
+        bID.setText(utilInstance.buildId);
+        bFp.setText(utilInstance.buildFingerPrint);
     }
 }
